@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.17.4'
+}
+
+group = 'com.hlsl'
+version = '1.2.0'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+intellij {
+    version = '2024.1'
+    type = 'IC'
+    // CLion-specific plugins not needed for syntax highlighting;
+    // using IntelliJ Community (IC) for broader compatibility.
+}
+
+tasks {
+    patchPluginXml {
+        sinceBuild = '241'
+        untilBuild = '261.*'
+    }
+
+    buildSearchableOptions {
+        enabled = false
+    }
+}
