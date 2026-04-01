@@ -24,6 +24,15 @@ public final class HlslDxcSettings implements PersistentStateComponent<HlslDxcSe
         public String hlslVersion = "2021";
         public boolean enableValidation = true;
         public boolean treatWarningsAsErrors = false;
+        // Warning groups (all enabled by default)
+        public boolean warnUnusedVariable = true;
+        public boolean warnUnusedParameter = true;
+        public boolean warnUnreachableCode = true;
+        public boolean warnUninitializedVariable = true;
+        public boolean warnImplicitTruncation = true;
+        public boolean warnConversion = true;
+        public boolean warnPayloadAccess = true;
+        public boolean warnEffectsSyntax = true;
     }
 
     private State state = new State();
@@ -59,6 +68,30 @@ public final class HlslDxcSettings implements PersistentStateComponent<HlslDxcSe
 
     public boolean isTreatWarningsAsErrors() { return state.treatWarningsAsErrors; }
     public void setTreatWarningsAsErrors(boolean treat) { state.treatWarningsAsErrors = treat; }
+
+    public boolean isWarnUnusedVariable() { return state.warnUnusedVariable; }
+    public void setWarnUnusedVariable(boolean v) { state.warnUnusedVariable = v; }
+
+    public boolean isWarnUnusedParameter() { return state.warnUnusedParameter; }
+    public void setWarnUnusedParameter(boolean v) { state.warnUnusedParameter = v; }
+
+    public boolean isWarnUnreachableCode() { return state.warnUnreachableCode; }
+    public void setWarnUnreachableCode(boolean v) { state.warnUnreachableCode = v; }
+
+    public boolean isWarnUninitializedVariable() { return state.warnUninitializedVariable; }
+    public void setWarnUninitializedVariable(boolean v) { state.warnUninitializedVariable = v; }
+
+    public boolean isWarnImplicitTruncation() { return state.warnImplicitTruncation; }
+    public void setWarnImplicitTruncation(boolean v) { state.warnImplicitTruncation = v; }
+
+    public boolean isWarnConversion() { return state.warnConversion; }
+    public void setWarnConversion(boolean v) { state.warnConversion = v; }
+
+    public boolean isWarnPayloadAccess() { return state.warnPayloadAccess; }
+    public void setWarnPayloadAccess(boolean v) { state.warnPayloadAccess = v; }
+
+    public boolean isWarnEffectsSyntax() { return state.warnEffectsSyntax; }
+    public void setWarnEffectsSyntax(boolean v) { state.warnEffectsSyntax = v; }
 
     /**
      * Returns the resolved DXC path: user setting if non-empty, otherwise auto-detected.

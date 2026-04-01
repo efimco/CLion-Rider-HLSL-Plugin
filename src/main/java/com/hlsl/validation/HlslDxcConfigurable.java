@@ -8,6 +8,9 @@ import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.awt.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class HlslDxcConfigurable implements Configurable {
 
@@ -17,6 +20,9 @@ public class HlslDxcConfigurable implements Configurable {
     private JTextField hlslVersionField;
     private JCheckBox enableValidationCheckBox;
     private JCheckBox treatWarningsAsErrorsCheckBox;
+
+    // Warning group checkboxes: flag name -> checkbox
+    private final Map<String, JCheckBox> warningCheckBoxes = new LinkedHashMap<>();
 
     @Override
     public @Nls(capitalization = Nls.Capitalization.Title) String getDisplayName() {
@@ -34,7 +40,24 @@ public class HlslDxcConfigurable implements Configurable {
         defaultEntryPointField = new JTextField();
         hlslVersionField = new JTextField();
         enableValidationCheckBox = new JCheckBox("Enable DXC validation");
-        treatWarningsAsErrorsCheckBox = new JCheckBox("Treat warnings as errors");
+        treatWarningsAsErrorsCheckBox = new JCheckBox("Treat warnings as errors (-WX)");
+
+        // Warning group checkboxes
+        warningCheckBoxes.put("unused-variable", new JCheckBox("Unused variables"));
+        warningCheckBoxes.put("unused-parameter", new JCheckBox("Unused parameters"));
+        warningCheckBoxes.put("unreachable-code", new JCheckBox("Unreachable code"));
+        warningCheckBoxes.put("uninitialized", new JCheckBox("Uninitialized variables"));
+        warningCheckBoxes.put("implicit-truncation", new JCheckBox("Implicit truncation"));
+        warningCheckBoxes.put("conversion", new JCheckBox("Implicit conversions"));
+        warningCheckBoxes.put("payload-access", new JCheckBox("Payload access (raytracing)"));
+        warningCheckBoxes.put("effects-syntax", new JCheckBox("Effects syntax (deprecated)"));
+
+        JPanel warningsPanel = new JPanel();
+        warningsPanel.setLayout(new BoxLayout(warningsPanel, BoxLayout.Y_AXIS));
+        warningsPanel.setBorder(BorderFactory.createTitledBorder("Warning Groups"));
+        for (JCheckBox cb : warningCheckBoxes.values()) {
+            warningsPanel.add(cb);
+        }
 
         // Show auto-detected path as hint
         String autoDetected = HlslDxcSettings.autoDetectDxc();
@@ -50,6 +73,7 @@ public class HlslDxcConfigurable implements Configurable {
                 .addLabeledComponent("HLSL version (-HV):", hlslVersionField)
                 .addComponent(enableValidationCheckBox)
                 .addComponent(treatWarningsAsErrorsCheckBox)
+                .addComponent(warningsPanel)
                 .addComponentFillVertically(new JPanel(), 0)
                 .getPanel();
     }
@@ -62,7 +86,15 @@ public class HlslDxcConfigurable implements Configurable {
                 || !defaultEntryPointField.getText().equals(settings.getDefaultEntryPoint())
                 || !hlslVersionField.getText().equals(settings.getHlslVersion())
                 || enableValidationCheckBox.isSelected() != settings.isEnableValidation()
-                || treatWarningsAsErrorsCheckBox.isSelected() != settings.isTreatWarningsAsErrors();
+                || treatWarningsAsErrorsCheckBox.isSelected() != settings.isTreatWarningsAsErrors()
+                || warningCheckBoxes.get("unused-variable").isSelected() != settings.isWarnUnusedVariable()
+                || warningCheckBoxes.get("unused-parameter").isSelected() != settings.isWarnUnusedParameter()
+                || warningCheckBoxes.get("unreachable-code").isSelected() != settings.isWarnUnreachableCode()
+                || warningCheckBoxes.get("uninitialized").isSelected() != settings.isWarnUninitializedVariable()
+                || warningCheckBoxes.get("implicit-truncation").isSelected() != settings.isWarnImplicitTruncation()
+                || warningCheckBoxes.get("conversion").isSelected() != settings.isWarnConversion()
+                || warningCheckBoxes.get("payload-access").isSelected() != settings.isWarnPayloadAccess()
+                || warningCheckBoxes.get("effects-syntax").isSelected() != settings.isWarnEffectsSyntax();
     }
 
     @Override
@@ -74,6 +106,14 @@ public class HlslDxcConfigurable implements Configurable {
         settings.setHlslVersion(hlslVersionField.getText());
         settings.setEnableValidation(enableValidationCheckBox.isSelected());
         settings.setTreatWarningsAsErrors(treatWarningsAsErrorsCheckBox.isSelected());
+        settings.setWarnUnusedVariable(warningCheckBoxes.get("unused-variable").isSelected());
+        settings.setWarnUnusedParameter(warningCheckBoxes.get("unused-parameter").isSelected());
+        settings.setWarnUnreachableCode(warningCheckBoxes.get("unreachable-code").isSelected());
+        settings.setWarnUninitializedVariable(warningCheckBoxes.get("uninitialized").isSelected());
+        settings.setWarnImplicitTruncation(warningCheckBoxes.get("implicit-truncation").isSelected());
+        settings.setWarnConversion(warningCheckBoxes.get("conversion").isSelected());
+        settings.setWarnPayloadAccess(warningCheckBoxes.get("payload-access").isSelected());
+        settings.setWarnEffectsSyntax(warningCheckBoxes.get("effects-syntax").isSelected());
     }
 
     @Override
@@ -85,5 +125,13 @@ public class HlslDxcConfigurable implements Configurable {
         hlslVersionField.setText(settings.getHlslVersion());
         enableValidationCheckBox.setSelected(settings.isEnableValidation());
         treatWarningsAsErrorsCheckBox.setSelected(settings.isTreatWarningsAsErrors());
+        warningCheckBoxes.get("unused-variable").setSelected(settings.isWarnUnusedVariable());
+        warningCheckBoxes.get("unused-parameter").setSelected(settings.isWarnUnusedParameter());
+        warningCheckBoxes.get("unreachable-code").setSelected(settings.isWarnUnreachableCode());
+        warningCheckBoxes.get("uninitialized").setSelected(settings.isWarnUninitializedVariable());
+        warningCheckBoxes.get("implicit-truncation").setSelected(settings.isWarnImplicitTruncation());
+        warningCheckBoxes.get("conversion").setSelected(settings.isWarnConversion());
+        warningCheckBoxes.get("payload-access").setSelected(settings.isWarnPayloadAccess());
+        warningCheckBoxes.get("effects-syntax").setSelected(settings.isWarnEffectsSyntax());
     }
 }

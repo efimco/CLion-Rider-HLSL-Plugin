@@ -114,6 +114,23 @@ public class HlslDxcAnnotator extends ExternalAnnotator<HlslDxcAnnotator.Collect
             command.add("-E");
             command.add(entryPoint);
             command.add("-nologo");
+            // Start with all warnings enabled, then suppress unchecked groups
+            command.add("-Weverything");
+            // Suppress noisy DXC built-in warnings
+            command.add("-Wno-unused-macros");
+            command.add("-Wno-missing-prototypes");
+            command.add("-Wno-missing-variable-declarations");
+            if (!settings.isWarnUnusedVariable()) command.add("-Wno-unused-variable");
+            if (!settings.isWarnUnusedParameter()) command.add("-Wno-unused-parameter");
+            if (!settings.isWarnUnreachableCode()) {
+                command.add("-Wno-unreachable-code");
+                command.add("-Wno-unreachable-code-return");
+            }
+            if (!settings.isWarnUninitializedVariable()) command.add("-Wno-uninitialized");
+            if (!settings.isWarnImplicitTruncation()) command.add("-Wno-implicit-truncation");
+            if (!settings.isWarnConversion()) command.add("-Wno-conversion");
+            if (!settings.isWarnPayloadAccess()) command.add("-Wno-payload-access-warning");
+            if (!settings.isWarnEffectsSyntax()) command.add("-Wno-effects-syntax");
             // Disable DXIL validation (we only want compilation diagnostics)
             command.add("-Vd");
             // HLSL version (2021 needed for ResourceDescriptorHeap etc.)
@@ -156,6 +173,8 @@ public class HlslDxcAnnotator extends ExternalAnnotator<HlslDxcAnnotator.Collect
 
             // Parse output lines for diagnostics
             for (String line : outputLines) {
+                // Skip <built-in> diagnostics from DXC internals
+                if (line.contains("<built-in>")) continue;
                 Matcher m = DIAG_PATTERN.matcher(line.trim());
                 if (m.matches()) {
                     int diagLine = m.group(1) != null ? Integer.parseInt(m.group(1)) : 0;
