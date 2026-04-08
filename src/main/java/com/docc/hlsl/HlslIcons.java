@@ -1,4 +1,4 @@
-package com.hlsl;
+package com.docc.hlsl;
 
 import com.intellij.openapi.util.IconLoader;
 

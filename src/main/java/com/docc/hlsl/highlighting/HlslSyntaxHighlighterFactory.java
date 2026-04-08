@@ -1,4 +1,4 @@
-package com.hlsl.highlighting;
+package com.docc.hlsl.highlighting;
 
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;

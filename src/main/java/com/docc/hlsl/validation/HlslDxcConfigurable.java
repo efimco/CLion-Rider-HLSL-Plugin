@@ -1,7 +1,9 @@
-package com.hlsl.validation;
+package com.docc.hlsl.validation;
 
+import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.options.Configurable;
+import com.intellij.openapi.ui.TextBrowseFolderListener;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.util.ui.FormBuilder;
 import org.jetbrains.annotations.Nls;
@@ -32,9 +34,10 @@ public class HlslDxcConfigurable implements Configurable {
     @Override
     public @Nullable JComponent createComponent() {
         dxcPathField = new TextFieldWithBrowseButton();
-        dxcPathField.addBrowseFolderListener(
-                "Select DXC Executable", "Path to dxc or dxc.exe",
-                null, FileChooserDescriptorFactory.createSingleFileDescriptor());
+        FileChooserDescriptor chooserDescriptor = FileChooserDescriptorFactory.createSingleFileDescriptor();
+        chooserDescriptor.setTitle("Select DXC Executable");
+        chooserDescriptor.setDescription("Path to dxc or dxc.exe");
+        dxcPathField.addBrowseFolderListener(new TextBrowseFolderListener(chooserDescriptor));
 
         defaultProfileField = new JTextField();
         defaultEntryPointField = new JTextField();

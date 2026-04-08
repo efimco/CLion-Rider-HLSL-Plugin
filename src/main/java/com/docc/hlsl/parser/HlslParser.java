@@ -1,4 +1,4 @@
-package com.hlsl.parser;
+package com.docc.hlsl.parser;
 
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.PsiBuilder;

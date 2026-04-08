@@ -1,4 +1,4 @@
-package com.hlsl.validation;
+package com.docc.hlsl.validation;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;

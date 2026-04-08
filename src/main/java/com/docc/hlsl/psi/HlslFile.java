@@ -1,7 +1,7 @@
-package com.hlsl.psi;
+package com.docc.hlsl.psi;
 
-import com.hlsl.HlslFileType;
-import com.hlsl.HlslLanguage;
+import com.docc.hlsl.HlslFileType;
+import com.docc.hlsl.HlslLanguage;
 import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.psi.FileViewProvider;

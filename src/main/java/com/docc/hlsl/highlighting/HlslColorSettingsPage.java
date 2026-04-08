@@ -1,6 +1,6 @@
-package com.hlsl.highlighting;
+package com.docc.hlsl.highlighting;
 
-import com.hlsl.HlslIcons;
+import com.docc.hlsl.HlslIcons;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;

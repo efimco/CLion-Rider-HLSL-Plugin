@@ -1,9 +1,9 @@
-package com.hlsl.parser;
+package com.docc.hlsl.parser;
 
-import com.hlsl.HlslLanguage;
-import com.hlsl.lexer.HlslLexer;
-import com.hlsl.psi.HlslFile;
-import com.hlsl.psi.HlslTokenTypes;
+import com.docc.hlsl.HlslLanguage;
+import com.docc.hlsl.lexer.HlslLexer;
+import com.docc.hlsl.psi.HlslFile;
+import com.docc.hlsl.psi.HlslTokenTypes;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.ParserDefinition;
 import com.intellij.lang.PsiParser;

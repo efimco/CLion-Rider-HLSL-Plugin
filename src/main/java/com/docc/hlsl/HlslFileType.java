@@ -1,4 +1,4 @@
-package com.hlsl;
+package com.docc.hlsl;
 
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import com.intellij.openapi.util.NlsContexts;
@@ -16,7 +16,7 @@ public class HlslFileType extends LanguageFileType {
 
     @Override
     public @NonNls @NotNull String getName() {
-        return "HLSL";
+        return "HLSL File";
     }
 
     @Override

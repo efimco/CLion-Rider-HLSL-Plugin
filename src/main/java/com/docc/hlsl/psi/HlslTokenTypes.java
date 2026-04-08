@@ -1,4 +1,4 @@
-package com.hlsl.psi;
+package com.docc.hlsl.psi;
 
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;

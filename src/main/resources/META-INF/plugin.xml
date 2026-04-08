@@ -1,57 +1,57 @@
 <idea-plugin>
-    <id>com.hlsl.plugin</id>
+    <id>com.docc.hlsl.plugin</id>
     <name>HLSL Language Support</name>
     <vendor>DOCC</vendor>
     <description><![CDATA[
         Syntax highlighting and DXC validation for HLSL (High Level Shading Language) files.
-        Supports .hlsl, .hlsli, .fx, .fxh file extensions.
-        Additional extensions (.vsh, .psh, .gsh, .csh, etc.) can be added via Settings > Editor > File Types > HLSL.
+        Supports .hlsl and .hlsli file extensions by default.
+        Additional extensions (.fx, .fxh, .vsh, .psh, .gsh, .csh, etc.) can be added via Settings > Editor > File Types > HLSL.
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <fileType
-                name="HLSL"
-                implementationClass="com.hlsl.HlslFileType"
+                name="HLSL File"
+                implementationClass="com.docc.hlsl.HlslFileType"
                 fieldName="INSTANCE"
                 language="HLSL"
-                extensions="hlsl;hlsli;fx;fxh"/>
+                extensions="hlsl;hlsli"/>
 
         <lang.parserDefinition
                 language="HLSL"
-                implementationClass="com.hlsl.parser.HlslParserDefinition"/>
+                implementationClass="com.docc.hlsl.parser.HlslParserDefinition"/>
 
         <lang.syntaxHighlighterFactory
                 language="HLSL"
-                implementationClass="com.hlsl.highlighting.HlslSyntaxHighlighterFactory"/>
+                implementationClass="com.docc.hlsl.highlighting.HlslSyntaxHighlighterFactory"/>
 
         <colorSettingsPage
-                implementation="com.hlsl.highlighting.HlslColorSettingsPage"/>
+                implementation="com.docc.hlsl.highlighting.HlslColorSettingsPage"/>
 
         <lang.commenter
                 language="HLSL"
-                implementationClass="com.hlsl.HlslCommenter"/>
+                implementationClass="com.docc.hlsl.HlslCommenter"/>
 
         <lang.braceMatcher
                 language="HLSL"
-                implementationClass="com.hlsl.HlslBraceMatcher"/>
+                implementationClass="com.docc.hlsl.HlslBraceMatcher"/>
 
         <annotator
                 language="HLSL"
-                implementationClass="com.hlsl.highlighting.HlslStructNameAnnotator"/>
+                implementationClass="com.docc.hlsl.highlighting.HlslStructNameAnnotator"/>
 
         <externalAnnotator
                 language="HLSL"
-                implementationClass="com.hlsl.validation.HlslDxcAnnotator"/>
+                implementationClass="com.docc.hlsl.validation.HlslDxcAnnotator"/>
 
         <applicationConfigurable
                 parentId="tools"
-                instance="com.hlsl.validation.HlslDxcConfigurable"
-                id="com.hlsl.validation.HlslDxcConfigurable"
+                instance="com.docc.hlsl.validation.HlslDxcConfigurable"
+                id="com.docc.hlsl.validation.HlslDxcConfigurable"
                 displayName="HLSL / DXC"/>
 
         <applicationService
-                serviceImplementation="com.hlsl.validation.HlslDxcSettings"/>
+                serviceImplementation="com.docc.hlsl.validation.HlslDxcSettings"/>
     </extensions>
 </idea-plugin>
