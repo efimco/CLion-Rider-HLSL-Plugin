@@ -1,6 +1,6 @@
-package com.docc.hlsl.psi;
+package com.hlsl.psi;
 
-import com.docc.hlsl.HlslLanguage;
+import com.hlsl.HlslLanguage;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;

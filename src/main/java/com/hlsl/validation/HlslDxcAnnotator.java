@@ -1,6 +1,6 @@
-package com.docc.hlsl.validation;
+package com.hlsl.validation;
 
-import com.docc.hlsl.HlslFileType;
+import com.hlsl.HlslFileType;
 import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.lang.annotation.ExternalAnnotator;
 import com.intellij.lang.annotation.HighlightSeverity;

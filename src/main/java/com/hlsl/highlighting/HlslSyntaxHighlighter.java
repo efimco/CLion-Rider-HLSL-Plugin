@@ -1,6 +1,6 @@
-package com.docc.hlsl.highlighting;
+package com.hlsl.highlighting;
 
-import com.docc.hlsl.psi.HlslTokenTypes;
+import com.hlsl.psi.HlslTokenTypes;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.HighlighterColors;
@@ -11,7 +11,7 @@ import java.awt.Color;
 import java.awt.Font;
 import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IElementType;
-import com.docc.hlsl.lexer.HlslLexer;
+import com.hlsl.lexer.HlslLexer;
 import org.jetbrains.annotations.NotNull;
 
 import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;

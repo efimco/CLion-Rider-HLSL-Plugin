@@ -1,6 +1,6 @@
-package com.docc.hlsl;
+package com.hlsl;
 
-import com.docc.hlsl.psi.HlslTokenTypes;
+import com.hlsl.psi.HlslTokenTypes;
 import com.intellij.lang.BracePair;
 import com.intellij.lang.PairedBraceMatcher;
 import com.intellij.psi.PsiFile;

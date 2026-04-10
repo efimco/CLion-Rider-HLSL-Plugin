@@ -1,7 +1,7 @@
-package com.docc.hlsl.highlighting;
+package com.hlsl.highlighting;
 
-import com.docc.hlsl.HlslLanguage;
-import com.docc.hlsl.psi.HlslTokenTypes;
+import com.hlsl.HlslLanguage;
+import com.hlsl.psi.HlslTokenTypes;
 import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.lang.annotation.Annotator;
 import com.intellij.lang.annotation.HighlightSeverity;

@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>com.docc.hlsl.plugin</id>
+    <id>com.hlsl.plugin</id>
     <name>HLSL Language Support</name>
     <vendor>DOCC</vendor>
     <description><![CDATA[
@@ -13,45 +13,45 @@
     <extensions defaultExtensionNs="com.intellij">
         <fileType
                 name="HLSL File"
-                implementationClass="com.docc.hlsl.HlslFileType"
+                implementationClass="com.hlsl.HlslFileType"
                 fieldName="INSTANCE"
                 language="HLSL"
                 extensions="hlsl;hlsli"/>
 
         <lang.parserDefinition
                 language="HLSL"
-                implementationClass="com.docc.hlsl.parser.HlslParserDefinition"/>
+                implementationClass="com.hlsl.parser.HlslParserDefinition"/>
 
         <lang.syntaxHighlighterFactory
                 language="HLSL"
-                implementationClass="com.docc.hlsl.highlighting.HlslSyntaxHighlighterFactory"/>
+                implementationClass="com.hlsl.highlighting.HlslSyntaxHighlighterFactory"/>
 
         <colorSettingsPage
-                implementation="com.docc.hlsl.highlighting.HlslColorSettingsPage"/>
+                implementation="com.hlsl.highlighting.HlslColorSettingsPage"/>
 
         <lang.commenter
                 language="HLSL"
-                implementationClass="com.docc.hlsl.HlslCommenter"/>
+                implementationClass="com.hlsl.HlslCommenter"/>
 
         <lang.braceMatcher
                 language="HLSL"
-                implementationClass="com.docc.hlsl.HlslBraceMatcher"/>
+                implementationClass="com.hlsl.HlslBraceMatcher"/>
 
         <annotator
                 language="HLSL"
-                implementationClass="com.docc.hlsl.highlighting.HlslStructNameAnnotator"/>
+                implementationClass="com.hlsl.highlighting.HlslStructNameAnnotator"/>
 
         <externalAnnotator
                 language="HLSL"
-                implementationClass="com.docc.hlsl.validation.HlslDxcAnnotator"/>
+                implementationClass="com.hlsl.validation.HlslDxcAnnotator"/>
 
         <applicationConfigurable
                 parentId="tools"
-                instance="com.docc.hlsl.validation.HlslDxcConfigurable"
-                id="com.docc.hlsl.validation.HlslDxcConfigurable"
+                instance="com.hlsl.validation.HlslDxcConfigurable"
+                id="com.hlsl.validation.HlslDxcConfigurable"
                 displayName="HLSL / DXC"/>
 
         <applicationService
-                serviceImplementation="com.docc.hlsl.validation.HlslDxcSettings"/>
+                serviceImplementation="com.hlsl.validation.HlslDxcSettings"/>
     </extensions>
 </idea-plugin>

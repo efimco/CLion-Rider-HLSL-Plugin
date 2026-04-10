@@ -1,4 +1,4 @@
-package com.docc.hlsl;
+package com.hlsl;
 
 import com.intellij.lang.Commenter;
 import org.jetbrains.annotations.Nullable;

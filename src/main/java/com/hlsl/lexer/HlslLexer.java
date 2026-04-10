@@ -1,6 +1,6 @@
-package com.docc.hlsl.lexer;
+package com.hlsl.lexer;
 
-import com.docc.hlsl.psi.HlslTokenTypes;
+import com.hlsl.psi.HlslTokenTypes;
 import com.intellij.lexer.LexerBase;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;

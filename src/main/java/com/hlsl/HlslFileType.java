@@ -1,4 +1,4 @@
-package com.docc.hlsl;
+package com.hlsl;
 
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import com.intellij.openapi.util.NlsContexts;

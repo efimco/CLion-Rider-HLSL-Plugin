@@ -1,4 +1,4 @@
-package com.docc.hlsl.validation;
+package com.hlsl.validation;
 
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
